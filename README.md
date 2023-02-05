@@ -4,8 +4,6 @@ Use Tick Pick API &amp; Twilio to set up text message alerts based on user provi
 
 ## Getting Started
 
-------
-
 ### Twilio API Set Up 📱 
 
 [Sign Up for Free Twilio Account & Get Credentials](https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account)
@@ -44,8 +42,6 @@ EVENT_ID=1234567
 ```
 
 ## Run Python Script 💻
-
------
 
 **Step 1:**
 
