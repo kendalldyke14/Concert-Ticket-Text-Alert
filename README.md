@@ -48,7 +48,7 @@ EVENT_ID=1234567
 
 **Step 2:**
 
-`python ticket_sms_alert.py`
+`python src/ticket_sms_alert.py`
 
 **Step 3:**
 
