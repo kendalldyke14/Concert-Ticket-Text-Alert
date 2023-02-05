@@ -118,7 +118,7 @@ class TickPickRequest:
     def send_text(self, ticket_list):
         for tick in ticket_list:
             if tick not in self.texts_sent:
-                logging.info(f"Sending text to {os.getenv('SEND_TEXTS_TO')}")
+                logging.info(f"Sending text to {os.getenv('YOUR_PHONE_NUMBER')}")
                 twilio_client_setup().messages \
                     .create(
                     body=f"There are {self.count_available_tickets} tickets available under ${self.max_price} for"
