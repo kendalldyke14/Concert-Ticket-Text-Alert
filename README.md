@@ -1,6 +1,6 @@
 # Concert Ticket Text Message Alerting
 
-Use Tick Pick API &amp; Twilio to set up text message alerts based on user provided parameters
+Use Tick Pick API &amp; Twilio to set up text message alerts for ticket availability based on user provided parameters.
 
 ## Getting Started
 
@@ -24,13 +24,6 @@ Your event ID will be at the very end of the URL for your event.
 
 Create a `.env` file at the same directory level as this README. It should have the following format.
 
-- `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN` & `TWILIO_PHONE_NUMBER` should come from your Twilio account
-
-- `YOUR_PHONE_NUMBER` is the number you would like the SMS message to be sent to
-
-- `EVENT_ID` can be found by following [these steps](#tick-pick-event-id-)
-
-Example `.env` file:
 ```
 TWILIO_ACCOUNT_SID=xxxxxx
 TWILIO_AUTH_TOKEN=xxxxxxx
@@ -41,7 +34,13 @@ YOUR_PHONE_NUMBER=+11111111
 EVENT_ID=1234567
 ```
 
-## Run Python Script 💻
+- `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN` & `TWILIO_PHONE_NUMBER` should come from your Twilio account
+
+- `YOUR_PHONE_NUMBER` is the number you would like the SMS message to be sent to
+
+- `EVENT_ID` can be found by following [these steps](#tick-pick-event-id-)
+
+## OPTION 1: Run Python Script in CLI 💻
 
 **Step 1:**
 
@@ -55,4 +54,19 @@ EVENT_ID=1234567
 
 Follow the CLI prompts; all responses should be integers.
 
->Note: Your script will continue running and checking for tickets at the time interval you specify until you manually stop it.
+
+## OPTION 2: Run Python Script in Docker Container 🐳 
+
+**Step 1:**
+
+`docker build --tag ticket-tracker:latest .`
+
+**Step 2:**
+
+When using Docker, pass the ticket requirements into the `docker run` command. All arguments should be integers.
+
+`docker run ticket-tracker [number of tickets] [maximum price] [frequency of ticket check (mins)]`
+
+Example: `docker run 2 150 10` will search for 2 tickets under $150 every 10 minutes
+
+>Note: Regardless of which option you choose, your Python script will continue running and checking for tickets at the time interval you specify until you manually stop it.

@@ -4,6 +4,7 @@ import json
 import logging
 import os
 import re
+import sys
 
 import pandas as pd
 import requests
@@ -21,7 +22,10 @@ def twilio_client_setup():
 def set_quantity_requirement():
     while True:
         try:
-            quantity = input("How many tickets would you like?")
+            if len(sys.argv) > 1:
+                quantity = sys.argv[1]
+            else:
+                quantity = input("How many tickets would you like?")
             quantity_int = int(quantity)
             break
         except ValueError:
@@ -32,7 +36,10 @@ def set_quantity_requirement():
 def set_price_requirement():
     while True:
         try:
-            max_price = input("What is the maximum price (in USD) that you will pay?")
+            if len(sys.argv) > 1:
+                max_price = sys.argv[2]
+            else:
+                max_price = input("What is the maximum price (in USD) that you will pay?")
             max_price_clean = re.search("[\d,.]+", max_price).group(0)
             max_price_clean = re.sub(",", "", max_price_clean)
 
@@ -48,7 +55,10 @@ def set_price_requirement():
 def set_request_frequency():
     while True:
         try:
-            frequency = input("How often should I check for new tickets (in minutes)? ")
+            if len(sys.argv) > 1:
+                frequency = sys.argv[3]
+            else:
+                frequency = input("How often should I check for new tickets (in minutes)? ")
             frequency_int = int(frequency) * 60
             break
         except ValueError:
@@ -124,7 +134,7 @@ class TickPickRequest:
                     body=f"There are {self.count_available_tickets} tickets available under ${self.max_price} for"
                          f" {self.event_info} on {self.event_date}! \nhttps://www.tickpick.com/buy-tickets/{self.event_id}",
                     from_=os.getenv("TWILIO_PHONE_NUMBER"),
-                    to=os.getenv('SEND_TEXTS_TO')
+                    to=os.getenv('YOUR_PHONE_NUMBER')
                 )
                 for x in ticket_list:
                     self.texts_sent.add(x)
