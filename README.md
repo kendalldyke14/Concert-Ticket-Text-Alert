@@ -12,7 +12,7 @@ _Keep these three values close, you will need them in your `.env` file._
 
 ![twilio_creds.png](artifacts/twilio_creds.png)
 
-###Tick Pick Event ID
+### Tick Pick Event ID
 
 Navigate to your event on [tickpick.com](https://www.tickpick.com)
 
