@@ -30,7 +30,7 @@ Create a `.env` file at the same directory level as this README. It should have 
 
 - `YOUR_PHONE_NUMBER` is the number you would like the SMS message to be sent to
 
-- `EVENT_ID` can be found by following [these steps](#tick-pick-event-id)
+- `EVENT_ID` can be found by following [these steps](#tick-pick-event-id-)
 
 Example `.env` file:
 ```
