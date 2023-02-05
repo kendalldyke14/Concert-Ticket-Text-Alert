@@ -63,9 +63,10 @@ Follow the CLI prompts; all responses should be integers.
 
 **Step 2:**
 
-When using Docker, pass the ticket requirements into the `docker run` command. All arguments should be integers.
-
 `docker run ticket-tracker [number of tickets] [maximum price] [frequency of ticket check (mins)]`
+
+
+When using Docker, pass the ticket requirements into the `docker run` command. All arguments should be integers.
 
 Example: `docker run 2 150 10` will search for 2 tickets under $150 every 10 minutes
 
